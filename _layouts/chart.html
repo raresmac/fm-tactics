@@ -1,0 +1,25 @@
+---
+layout: default
+title: "Charts"
+permalink: /charts/
+---
+
+<h1>My D3.js Chart</h1>
+
+<div id="chart"></div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var svg = d3.select("#chart").append("svg")
+        .attr("width", 500)
+        .attr("height", 300);
+
+    svg.append("circle")
+        .attr("cx", 250)
+        .attr("cy", 150)
+        .attr("r", 100)
+        .style("fill", "blue");
+});
+</script>

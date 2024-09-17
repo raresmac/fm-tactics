@@ -1,0 +1,46 @@
+.table_component {
+    overflow: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.table_component table {
+    border: 1px solid #31315a;
+    height: 100%;
+    width: auto;
+    table-layout: auto;
+    border-collapse: collapse;
+    border-spacing: 1px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.table_component caption {
+    caption-side: top;
+    text-align: center;
+}
+
+.table_component th {
+  border: 1px solid #31315a;
+  background-color: #18243e;
+  color: #ffe11f;
+  padding: 8px;
+  text-align: center;
+}
+
+.table_component td {
+    border: 1px solid #31315a;
+    padding: 5px;
+}
+
+.table_component tr:nth-child(even) td {
+    background-color: #515867;
+    color: #ffffff;
+}
+
+.table_component tr:nth-child(odd) td {
+    background-color: #8b8f98;
+    color: #ffffff;
+}
