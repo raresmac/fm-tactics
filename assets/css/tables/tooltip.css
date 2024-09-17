@@ -1,0 +1,28 @@
+/* Tooltip container */
+  .tooltip {
+    position: absolute;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(10px);
+    pointer-events: none; /* Makes sure the tooltip doesn't interfere with mouse events */
+    white-space: normal; /* Prevents text wrapping */
+  }
+  
+  /* Tooltip when shown (on hover) */
+  .tooltip.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  /* Optional: Style for the headers */
+  .tooltip-header {
+    cursor: pointer;
+    position: relative;
+  }
+  

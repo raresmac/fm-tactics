@@ -13,8 +13,9 @@
     border-collapse: collapse;
     border-spacing: 1px;
     text-align: center;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 7%;
 }
 
 .table_component caption {
@@ -26,13 +27,13 @@
   border: 1px solid #31315a;
   background-color: #18243e;
   color: #ffe11f;
-  padding: 8px;
+  padding: 10px;
   text-align: center;
 }
 
 .table_component td {
     border: 1px solid #31315a;
-    padding: 5px;
+    padding: 8px;
 }
 
 .table_component tr:nth-child(even) td {

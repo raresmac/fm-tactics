@@ -5,27 +5,40 @@ permalink: /fm24/tactics/beyond
 ---
 
 <head>
-    <script src="/assets/js/tables/sort.js"></script>
     <link rel="stylesheet" href="/assets/css/tables/table.css">
+    <link rel="stylesheet" href="/assets/css/tables/tooltip.css">
 </head>
 
 <div class="table_component" role="region" tabindex="0">
     <table id="myTable">
         <tr>
-            <th onclick="sortTable(0)">Version</th>
+            <th onclick="sortTable(0)" class="tooltip-header"
+                data-tooltip="A major change means a team instruction has been changed. A minor version means a player role/instruction has been changed and it's based on the base version (2.1.3 based on 2.1).">Version</th>
             <th onclick="sortTable(1)">Mentality</th>
-            <th onclick="sortTable(2)">Place</th>
-            <th onclick="sortTable(3)">xPlace</th>
-            <th onclick="sortTable(4)">Points</th>
-            <th onclick="sortTable(5)">xPoints</th>
-            <th onclick="sortTable(6)">HP</th>
-            <th onclick="sortTable(7)">AP</th>
-            <th onclick="sortTable(8)">GF</th>
-            <th onclick="sortTable(9)">xGF</th>
-            <th onclick="sortTable(10)">GA</th>
-            <th onclick="sortTable(11)">xGA</th>
-            <th onclick="sortTable(12)">GD</th>
-            <th onclick="sortTable(13)">xGD</th>
+            <th onclick="sortTable(2)" class="tooltip-header"
+                data-tooltip="Place in the regular season">Place</th>
+            <th onclick="sortTable(3)" class="tooltip-header"
+                data-tooltip="Expected place">xPlace</th>
+            <th onclick="sortTable(4)" class="tooltip-header"
+                data-tooltip="Number of points in the regular season">Points</th>
+            <th onclick="sortTable(5)" class="tooltip-header"
+                data-tooltip="Expected points">xPoints</th>
+            <th onclick="sortTable(6)" class="tooltip-header"
+                data-tooltip="Home points">HP</th>
+            <th onclick="sortTable(7)" class="tooltip-header"
+                data-tooltip="Away points">AP</th>
+            <th onclick="sortTable(8)" class="tooltip-header"
+                data-tooltip="Goals for">GF</th>
+            <th onclick="sortTable(9)" class="tooltip-header"
+                data-tooltip="Expected goals for">xGF</th>
+            <th onclick="sortTable(10)" class="tooltip-header"
+                data-tooltip="Goals against">GA</th>
+            <th onclick="sortTable(11)" class="tooltip-header"
+                data-tooltip="Expected goals against">xGA</th>
+            <th onclick="sortTable(12)" class="tooltip-header"
+                data-tooltip="Goal difference">GD</th>
+            <th onclick="sortTable(13)" class="tooltip-header"
+                data-tooltip="Expected goal difference">xGD</th>
         </tr>
         <tr>
             <td>1</td>
@@ -61,3 +74,8 @@ permalink: /fm24/tactics/beyond
         </tr>
     </table>
 </div>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script src="/assets/js/tables/sort.js"></script>
+<script src="/assets/js/tables/header-tips.js"></script>
