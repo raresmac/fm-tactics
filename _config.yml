@@ -19,10 +19,10 @@ locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "FM Tactics"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "Bring your best coaching to the table" # site tagline that appears below site title in masthead
 name                     : "raresmac"
 description              : "Football Manager 24 Tactics."
-url                      : "https://fm-tactics.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://raresmac.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "/fm-tactics" # the subpath of your site, e.g. "/blog"
 repository               : "raresmac/fm-tactics" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
