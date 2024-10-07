@@ -1,0 +1,257 @@
+.football-field {
+    position: relative;
+    top: 50px;
+    width: 900px;
+    height: 600px;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .pitch {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background-color: #444;
+    border: 1px solid #555;
+  }
+  
+  .boundary {
+    position: absolute;
+    background-color: #555;
+  }
+  
+  .boundary.top {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+  
+  .boundary.bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+  }
+  
+  .boundary.left {
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+  }
+  
+  .boundary.right {
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+  }
+  
+  .midfield-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background-color: #555;
+  }
+  
+  .goal {
+    position: absolute;
+    width: 20px;
+    height: 30%;
+    background-color: #333;
+    border: 1px solid #555;
+  }
+  
+  .goal.left {
+    top: 35%;
+    left: 0;
+  }
+  
+  .goal.right {
+    top: 35%;
+    right: 0;
+  }
+
+  .player {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #666;
+    border: 1px solid #555;
+    border-radius: 50%;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .player:hover {
+    transform: scale(1.5);
+    background-color: #fff;
+  }
+  
+  .player::before {
+    content: attr(data-player-name);
+    position: absolute;
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    z-index: 1;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .player:hover::before {
+    visibility: visible;
+  }
+  
+  .player::after {
+    content: attr(data-player-info);
+    position: absolute;
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+    z-index: 1;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .player:hover::after {
+    visibility: visible;
+  }
+  
+  .gk {
+    left: 5%;
+    top: 50%;
+  }
+  
+  .lb {
+    top: 10%;
+    left: 20%;
+  }
+  
+  .lcb {
+    top: 30%;
+    left: 20%;
+  }
+  
+  .cb {
+    top: 50%;
+    left: 20%;
+  }
+  
+  .rcb {
+    top: 70%;
+    left: 20%;
+  }
+  
+  .rb {
+    top: 90%;
+    left: 20%;
+  }
+  
+  .wbl {
+    top: 10%;
+    left: 35%;
+  }
+  
+  .ldm {
+    top: 30%;
+    left: 35%;
+  }
+  
+  .dm {
+    top: 50%;
+    left: 35%;
+  }
+  
+  .rdm {
+    top: 70%;
+    left: 35%;
+  }
+  
+  .wbr {
+    top: 90%;
+    left: 35%;
+  }
+  
+  .lm {
+    top: 10%;
+    left: 49%;
+  }
+  
+  .lcm {
+    top: 30%;
+    left: 49%;
+  }
+  
+  .cm {
+    top: 50%;
+    left: 49%;
+  }
+  
+  .rcm {
+    top: 70%;
+    left: 49%;
+  }
+  
+  .rm {
+    top: 90%;
+    left: 49%;
+  }
+  
+  .lw {
+    top: 10%;
+    left: 65%;
+  }
+  
+  .aml {
+    top: 30%;
+    left: 65%;
+  }
+  
+  .amc {
+    top: 50%;
+    left: 65%;
+  }
+  
+  .amr {
+    top: 70%;
+    left: 65%;
+  }
+  
+  .rw {
+    top: 90%;
+    left: 65%;
+  }
+  
+  .stl {
+    top: 35%;
+    left: 80%;
+  }
+  
+  .st {
+    top: 50%;
+    left: 80%;
+  }
+  
+  .str {
+    top: 65%;
+    left: 80%;
+  }
