@@ -86,33 +86,48 @@ permalink: /fm24/tactics/beyond/
     <div class="table_component" role="region" tabindex="0">
         <table id="myTable">
             <tr>
-                <th onclick="sortTable(0)" class="tooltip-header"
-                    data-tooltip="A major change means a team instruction has been changed. A minor version means a player role/instruction has been changed and it's based on the base version (2.1.3 based on 2.1).">Version</th>
-                <th onclick="sortTable(1)">Mentality</th>
-                <th onclick="sortTable(2)" class="tooltip-header"
-                    data-tooltip="Place in the regular season">Place</th>
-                <th onclick="sortTable(3)" class="tooltip-header"
-                    data-tooltip="Expected place">xPlace</th>
-                <th onclick="sortTable(4)" class="tooltip-header"
-                    data-tooltip="Number of points in the regular season">Points</th>
-                <th onclick="sortTable(5)" class="tooltip-header"
-                    data-tooltip="Expected points">xPoints</th>
-                <th onclick="sortTable(6)" class="tooltip-header"
-                    data-tooltip="Home points">HP</th>
-                <th onclick="sortTable(7)" class="tooltip-header"
-                    data-tooltip="Away points">AP</th>
-                <th onclick="sortTable(8)" class="tooltip-header"
-                    data-tooltip="Goals for">GF</th>
-                <th onclick="sortTable(9)" class="tooltip-header"
-                    data-tooltip="Expected goals for">xGF</th>
-                <th onclick="sortTable(10)" class="tooltip-header"
-                    data-tooltip="Goals against">GA</th>
-                <th onclick="sortTable(11)" class="tooltip-header"
-                    data-tooltip="Expected goals against">xGA</th>
-                <th onclick="sortTable(12)" class="tooltip-header"
-                    data-tooltip="Goal difference">GD</th>
-                <th onclick="sortTable(13)" class="tooltip-header"
-                    data-tooltip="Expected goal difference">xGD</th>
+                <th onclick="sortTable(0)" class="tooltip">Version
+                    <div class="tooltiptext">Major change - team instructions. Minor change - player role/instruction</div>
+                </th>
+                <th onclick="sortTable(1)" class="tooltip">Mentality
+                    <div class="tooltiptext">Team mentality</div>
+                </th>
+                <th onclick="sortTable(2)" class="tooltip">Place
+                    <div class="tooltiptext">Place in the regular season</div>
+                </th>
+                <th onclick="sortTable(3)" class="tooltip">xPlace
+                    <div class="tooltiptext">Expected place in the regular season</div>
+                </th>
+                <th onclick="sortTable(4)" class="tooltip">Points
+                    <div class="tooltiptext">Number of points in the regular season</div>
+                </th>
+                <th onclick="sortTable(5)" class="tooltip">xPoints
+                    <div class="tooltiptext">Expected points</div>
+                </th>
+                <th onclick="sortTable(6)" class="tooltip">HP
+                    <div class="tooltiptext">Home points</div>
+                </th>
+                <th onclick="sortTable(7)" class="tooltip">AP
+                    <div class="tooltiptext">Away points</div>
+                </th>
+                <th onclick="sortTable(8)" class="tooltip">GF
+                    <div class="tooltiptext">Goals for</div>
+                </th>
+                <th onclick="sortTable(9)" class="tooltip">xGF
+                    <div class="tooltiptext">Expected goals for</div>
+                </th>
+                <th onclick="sortTable(10)" class="tooltip">GA
+                    <div class="tooltiptext">Goals against</div>
+                </th>
+                <th onclick="sortTable(11)" class="tooltip">xGA
+                    <div class="tooltiptext">Expected goals against</div>
+                </th>
+                <th onclick="sortTable(12)" class="tooltip">GD
+                    <div class="tooltiptext">Goal difference</div>
+                </th>
+                <th onclick="sortTable(13)" class="tooltip">xGD
+                    <div class="tooltiptext">Expected goal difference</div>
+                </th>
             </tr>
             <tr>
                 <td>1</td>
@@ -363,8 +378,6 @@ permalink: /fm24/tactics/beyond/
     <p>2.3: AMR - IW - Support<br>
         2.3.1: DR - WB - Attack</p>
 
-    <div id="tooltip" class="tooltip"></div>
-
     <!-- <div class="tactic-description">
         <h2>Tactic Name: "Beyond"</h2>
         <p>This tactic focuses on quick counter-attacks and exploiting the opponent's defense.</p>
@@ -384,5 +397,5 @@ permalink: /fm24/tactics/beyond/
 
 </body>
 
-<script src="/assets/js/tables/sort.js"></script>
-<script src="/assets/js/tables/header-tips.js"></script>
+<script src="{{ site.baseurl }}/assets/js/tables/sort.js"></script>
+<script src="{{ site.baseurl }}/assets/js/tables/header-tips.js"></script>
