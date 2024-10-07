@@ -19,7 +19,7 @@ locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "FM Tactics"
 title_separator          : "-"
-subtitle                 : "Bring your best coaching to the table" # site tagline that appears below site title in masthead
+subtitle                 : "Bring your best coaching to the field" # site tagline that appears below site title in masthead
 name                     : "raresmac"
 description              : "Football Manager 24 Tactics."
 url                      : "https://raresmac.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
