@@ -1,5 +1,6 @@
 module.exports = {
-    extends: 'eslint:recommended',
+    root: true,
+   ...require('eslint-config-recommended'),
     env: {
       browser: true,
     },
