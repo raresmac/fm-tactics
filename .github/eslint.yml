@@ -1,0 +1,22 @@
+name: ESLint
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: bundle install
+      - name: Run ESLint
+        run: eslint.
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: eslint-report
+          path: eslint-report.json
