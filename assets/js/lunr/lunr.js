@@ -38,23 +38,23 @@
  * @namespace {function} lunr
  */
 var lunr = function (config) {
-  var builder = new lunr.Builder
+  var builder = new lunr.Builder;
 
   builder.pipeline.add(
     lunr.trimmer,
     lunr.stopWordFilter,
     lunr.stemmer
-  )
+  );
 
   builder.searchPipeline.add(
     lunr.stemmer
-  )
+  );
 
-  config.call(builder, builder)
-  return builder.build()
-}
+  config.call(builder, builder);
+  return builder.build();
+};
 
-lunr.version = "2.3.9"
+lunr.version = "2.3.9";
 /*!
  * lunr.utils
  * Copyright (C) 2020 Oliver Nightingale
@@ -64,7 +64,7 @@ lunr.version = "2.3.9"
  * A namespace containing utils for the rest of the lunr library
  * @namespace lunr.utils
  */
-lunr.utils = {}
+lunr.utils = {};
 
 /**
  * Print a warning message to the console.
@@ -77,11 +77,11 @@ lunr.utils.warn = (function (global) {
   /* eslint-disable no-console */
   return function (message) {
     if (global.console && console.warn) {
-      console.warn(message)
+      console.warn(message);
     }
-  }
+  };
   /* eslint-enable no-console */
-})(this)
+})(this);
 
 /**
  * Convert an object to a string.
@@ -96,11 +96,11 @@ lunr.utils.warn = (function (global) {
  */
 lunr.utils.asString = function (obj) {
   if (obj === void 0 || obj === null) {
-    return ""
+    return "";
   } else {
-    return obj.toString()
+    return obj.toString();
   }
-}
+};
 
 /**
  * Clones an object.
@@ -120,61 +120,61 @@ lunr.utils.asString = function (obj) {
  */
 lunr.utils.clone = function (obj) {
   if (obj === null || obj === undefined) {
-    return obj
+    return obj;
   }
 
   var clone = Object.create(null),
-      keys = Object.keys(obj)
+      keys = Object.keys(obj);
 
   for (var i = 0; i < keys.length; i++) {
     var key = keys[i],
-        val = obj[key]
+        val = obj[key];
 
     if (Array.isArray(val)) {
-      clone[key] = val.slice()
-      continue
+      clone[key] = val.slice();
+      continue;
     }
 
     if (typeof val === 'string' ||
         typeof val === 'number' ||
         typeof val === 'boolean') {
-      clone[key] = val
-      continue
+      clone[key] = val;
+      continue;
     }
 
-    throw new TypeError("clone is not deep and does not support nested objects")
+    throw new TypeError("clone is not deep and does not support nested objects");
   }
 
-  return clone
-}
+  return clone;
+};
 lunr.FieldRef = function (docRef, fieldName, stringValue) {
-  this.docRef = docRef
-  this.fieldName = fieldName
-  this._stringValue = stringValue
-}
+  this.docRef = docRef;
+  this.fieldName = fieldName;
+  this._stringValue = stringValue;
+};
 
-lunr.FieldRef.joiner = "/"
+lunr.FieldRef.joiner = "/";
 
 lunr.FieldRef.fromString = function (s) {
-  var n = s.indexOf(lunr.FieldRef.joiner)
+  var n = s.indexOf(lunr.FieldRef.joiner);
 
   if (n === -1) {
-    throw "malformed field ref string"
+    throw "malformed field ref string";
   }
 
   var fieldRef = s.slice(0, n),
-      docRef = s.slice(n + 1)
+      docRef = s.slice(n + 1);
 
-  return new lunr.FieldRef (docRef, fieldRef, s)
-}
+  return new lunr.FieldRef (docRef, fieldRef, s);
+};
 
 lunr.FieldRef.prototype.toString = function () {
   if (this._stringValue == undefined) {
-    this._stringValue = this.fieldName + lunr.FieldRef.joiner + this.docRef
+    this._stringValue = this.fieldName + lunr.FieldRef.joiner + this.docRef;
   }
 
-  return this._stringValue
-}
+  return this._stringValue;
+};
 /*!
  * lunr.Set
  * Copyright (C) 2020 Oliver Nightingale
@@ -186,18 +186,18 @@ lunr.FieldRef.prototype.toString = function () {
  * @constructor
  */
 lunr.Set = function (elements) {
-  this.elements = Object.create(null)
+  this.elements = Object.create(null);
 
   if (elements) {
-    this.length = elements.length
+    this.length = elements.length;
 
     for (var i = 0; i < this.length; i++) {
-      this.elements[elements[i]] = true
+      this.elements[elements[i]] = true;
     }
   } else {
-    this.length = 0
+    this.length = 0;
   }
-}
+};
 
 /**
  * A complete set that contains all elements.
@@ -208,17 +208,17 @@ lunr.Set = function (elements) {
  */
 lunr.Set.complete = {
   intersect: function (other) {
-    return other
+    return other;
   },
 
   union: function () {
-    return this
+    return this;
   },
 
   contains: function () {
-    return true
+    return true;
   }
-}
+};
 
 /**
  * An empty set that contains no elements.
@@ -229,17 +229,17 @@ lunr.Set.complete = {
  */
 lunr.Set.empty = {
   intersect: function () {
-    return this
+    return this;
   },
 
   union: function (other) {
-    return other
+    return other;
   },
 
   contains: function () {
-    return false
+    return false;
   }
-}
+};
 
 /**
  * Returns true if this set contains the specified object.
@@ -248,8 +248,8 @@ lunr.Set.empty = {
  * @returns {boolean} - True if this set contains the specified object.
  */
 lunr.Set.prototype.contains = function (object) {
-  return !!this.elements[object]
-}
+  return !!this.elements[object];
+};
 
 /**
  * Returns a new set containing only the elements that are present in both
@@ -260,34 +260,34 @@ lunr.Set.prototype.contains = function (object) {
  */
 
 lunr.Set.prototype.intersect = function (other) {
-  var a, b, elements, intersection = []
+  var a, b, elements, intersection = [];
 
   if (other === lunr.Set.complete) {
-    return this
+    return this;
   }
 
   if (other === lunr.Set.empty) {
-    return other
+    return other;
   }
 
   if (this.length < other.length) {
-    a = this
-    b = other
+    a = this;
+    b = other;
   } else {
-    a = other
-    b = this
+    a = other;
+    b = this;
   }
 
-  elements = Object.keys(a.elements)
+  elements = Object.keys(a.elements);
 
   for (var i = 0; i < elements.length; i++) {
-    var element = elements[i]
+    var element = elements[i];
     if (element in b.elements) {
-      intersection.push(element)
+      intersection.push(element);
     }
   }
 
-  return new lunr.Set (intersection)
+  return new lunr.Set (intersection);
 }
 
 /**
@@ -299,14 +299,14 @@ lunr.Set.prototype.intersect = function (other) {
 
 lunr.Set.prototype.union = function (other) {
   if (other === lunr.Set.complete) {
-    return lunr.Set.complete
+    return lunr.Set.complete;
   }
 
   if (other === lunr.Set.empty) {
-    return this
+    return this;
   }
 
-  return new lunr.Set(Object.keys(this.elements).concat(Object.keys(other.elements)))
+  return new lunr.Set(Object.keys(this.elements).concat(Object.keys(other.elements)));
 }
 /**
  * A function to calculate the inverse document frequency for
@@ -317,17 +317,17 @@ lunr.Set.prototype.union = function (other) {
  * @param {number} documentCount - The total number of documents.
  */
 lunr.idf = function (posting, documentCount) {
-  var documentsWithTerm = 0
+  var documentsWithTerm = 0;
 
   for (var fieldName in posting) {
-    if (fieldName == '_index') continue // Ignore the term index, its not a field
-    documentsWithTerm += Object.keys(posting[fieldName]).length
+    if (fieldName == '_index') continue; // Ignore the term index, its not a field
+    documentsWithTerm += Object.keys(posting[fieldName]).length;
   }
 
-  var x = (documentCount - documentsWithTerm + 0.5) / (documentsWithTerm + 0.5)
+  var x = (documentCount - documentsWithTerm + 0.5) / (documentsWithTerm + 0.5);
 
-  return Math.log(1 + Math.abs(x))
-}
+  return Math.log(1 + Math.abs(x));
+};
 
 /**
  * A token wraps a string representation of a token
@@ -338,9 +338,9 @@ lunr.idf = function (posting, documentCount) {
  * @param {object} [metadata={}] - Metadata associated with this token.
  */
 lunr.Token = function (str, metadata) {
-  this.str = str || ""
-  this.metadata = metadata || {}
-}
+  this.str = str || "";
+  this.metadata = metadata || {};
+};
 
 /**
  * Returns the token string that is being wrapped by this object.
@@ -348,8 +348,8 @@ lunr.Token = function (str, metadata) {
  * @returns {string}
  */
 lunr.Token.prototype.toString = function () {
-  return this.str
-}
+  return this.str;
+};
 
 /**
  * A token update function is used when updating or optionally
@@ -372,9 +372,9 @@ lunr.Token.prototype.toString = function () {
  * @returns {lunr.Token}
  */
 lunr.Token.prototype.update = function (fn) {
-  this.str = fn(this.str, this.metadata)
-  return this
-}
+  this.str = fn(this.str, this.metadata);
+  return this;
+};
 
 /**
  * Creates a clone of this token. Optionally a function can be
@@ -384,9 +384,9 @@ lunr.Token.prototype.update = function (fn) {
  * @returns {lunr.Token}
  */
 lunr.Token.prototype.clone = function (fn) {
-  fn = fn || function (s) { return s }
-  return new lunr.Token (fn(this.str, this.metadata), this.metadata)
-}
+  fn = fn || function (s) { return s; };
+  return new lunr.Token (fn(this.str, this.metadata), this.metadata);
+};
 /*!
  * lunr.tokenizer
  * Copyright (C) 2020 Oliver Nightingale
@@ -412,7 +412,7 @@ lunr.Token.prototype.clone = function (fn) {
  */
 lunr.tokenizer = function (obj, metadata) {
   if (obj == null || obj == undefined) {
-    return []
+    return [];
   }
 
   if (Array.isArray(obj)) {
@@ -420,40 +420,40 @@ lunr.tokenizer = function (obj, metadata) {
       return new lunr.Token(
         lunr.utils.asString(t).toLowerCase(),
         lunr.utils.clone(metadata)
-      )
-    })
+      );
+    });
   }
 
   var str = obj.toString().toLowerCase(),
       len = str.length,
-      tokens = []
+      tokens = [];
 
   for (var sliceEnd = 0, sliceStart = 0; sliceEnd <= len; sliceEnd++) {
     var char = str.charAt(sliceEnd),
-        sliceLength = sliceEnd - sliceStart
+        sliceLength = sliceEnd - sliceStart;
 
     if ((char.match(lunr.tokenizer.separator) || sliceEnd == len)) {
 
       if (sliceLength > 0) {
-        var tokenMetadata = lunr.utils.clone(metadata) || {}
-        tokenMetadata["position"] = [sliceStart, sliceLength]
-        tokenMetadata["index"] = tokens.length
+        var tokenMetadata = lunr.utils.clone(metadata) || {};
+        tokenMetadata["position"] = [sliceStart, sliceLength];
+        tokenMetadata["index"] = tokens.length;
 
         tokens.push(
           new lunr.Token (
             str.slice(sliceStart, sliceEnd),
             tokenMetadata
           )
-        )
+        );
       }
 
-      sliceStart = sliceEnd + 1
+      sliceStart = sliceEnd + 1;
     }
 
   }
 
-  return tokens
-}
+  return tokens;
+};
 
 /**
  * The separator used to split a string into tokens. Override this property to change the behaviour of
@@ -462,7 +462,7 @@ lunr.tokenizer = function (obj, metadata) {
  * @static
  * @see lunr.tokenizer
  */
-lunr.tokenizer.separator = /[\s\-]+/
+lunr.tokenizer.separator = /[\s\-]+/;
 /*!
  * lunr.Pipeline
  * Copyright (C) 2020 Oliver Nightingale
@@ -498,10 +498,10 @@ lunr.tokenizer.separator = /[\s\-]+/
  * @constructor
  */
 lunr.Pipeline = function () {
-  this._stack = []
-}
+  this._stack = [];
+};
 
-lunr.Pipeline.registeredFunctions = Object.create(null)
+lunr.Pipeline.registeredFunctions = Object.create(null);
 
 /**
  * A pipeline function maps lunr.Token to lunr.Token. A lunr.Token contains the token
@@ -538,12 +538,12 @@ lunr.Pipeline.registeredFunctions = Object.create(null)
  */
 lunr.Pipeline.registerFunction = function (fn, label) {
   if (label in this.registeredFunctions) {
-    lunr.utils.warn('Overwriting existing registered function: ' + label)
+    lunr.utils.warn('Overwriting existing registered function: ' + label);
   }
 
-  fn.label = label
-  lunr.Pipeline.registeredFunctions[fn.label] = fn
-}
+  fn.label = label;
+  lunr.Pipeline.registeredFunctions[fn.label] = fn;
+};
 
 /**
  * Warns if the function is not registered as a Pipeline function.
@@ -552,12 +552,12 @@ lunr.Pipeline.registerFunction = function (fn, label) {
  * @private
  */
 lunr.Pipeline.warnIfFunctionNotRegistered = function (fn) {
-  var isRegistered = fn.label && (fn.label in this.registeredFunctions)
+  var isRegistered = fn.label && (fn.label in this.registeredFunctions);
 
   if (!isRegistered) {
-    lunr.utils.warn('Function is not registered with pipeline. This may cause problems when serialising the index.\n', fn)
+    lunr.utils.warn('Function is not registered with pipeline. This may cause problems when serialising the index.\n', fn);
   }
-}
+};
 
 /**
  * Loads a previously serialised pipeline.
@@ -570,20 +570,20 @@ lunr.Pipeline.warnIfFunctionNotRegistered = function (fn) {
  * @returns {lunr.Pipeline}
  */
 lunr.Pipeline.load = function (serialised) {
-  var pipeline = new lunr.Pipeline
+  var pipeline = new lunr.Pipeline;
 
   serialised.forEach(function (fnName) {
-    var fn = lunr.Pipeline.registeredFunctions[fnName]
+    var fn = lunr.Pipeline.registeredFunctions[fnName];
 
     if (fn) {
-      pipeline.add(fn)
+      pipeline.add(fn);
     } else {
-      throw new Error('Cannot load unregistered function: ' + fnName)
+      throw new Error('Cannot load unregistered function: ' + fnName);
     }
-  })
+  });
 
-  return pipeline
-}
+  return pipeline;
+};
 
 /**
  * Adds new functions to the end of the pipeline.
@@ -593,13 +593,13 @@ lunr.Pipeline.load = function (serialised) {
  * @param {lunr.PipelineFunction[]} functions - Any number of functions to add to the pipeline.
  */
 lunr.Pipeline.prototype.add = function () {
-  var fns = Array.prototype.slice.call(arguments)
+  var fns = Array.prototype.slice.call(arguments);
 
   fns.forEach(function (fn) {
-    lunr.Pipeline.warnIfFunctionNotRegistered(fn)
-    this._stack.push(fn)
-  }, this)
-}
+    lunr.Pipeline.warnIfFunctionNotRegistered(fn);
+    this._stack.push(fn);
+  }, this);
+};
 
 /**
  * Adds a single function after a function that already exists in the
@@ -611,16 +611,16 @@ lunr.Pipeline.prototype.add = function () {
  * @param {lunr.PipelineFunction} newFn - The new function to add to the pipeline.
  */
 lunr.Pipeline.prototype.after = function (existingFn, newFn) {
-  lunr.Pipeline.warnIfFunctionNotRegistered(newFn)
+  lunr.Pipeline.warnIfFunctionNotRegistered(newFn);
 
-  var pos = this._stack.indexOf(existingFn)
+  var pos = this._stack.indexOf(existingFn);
   if (pos == -1) {
-    throw new Error('Cannot find existingFn')
+    throw new Error('Cannot find existingFn');
   }
 
-  pos = pos + 1
-  this._stack.splice(pos, 0, newFn)
-}
+  pos = pos + 1;
+  this._stack.splice(pos, 0, newFn);
+};
 
 /**
  * Adds a single function before a function that already exists in the
@@ -632,15 +632,15 @@ lunr.Pipeline.prototype.after = function (existingFn, newFn) {
  * @param {lunr.PipelineFunction} newFn - The new function to add to the pipeline.
  */
 lunr.Pipeline.prototype.before = function (existingFn, newFn) {
-  lunr.Pipeline.warnIfFunctionNotRegistered(newFn)
+  lunr.Pipeline.warnIfFunctionNotRegistered(newFn);
 
-  var pos = this._stack.indexOf(existingFn)
+  var pos = this._stack.indexOf(existingFn);
   if (pos == -1) {
-    throw new Error('Cannot find existingFn')
+    throw new Error('Cannot find existingFn');
   }
 
-  this._stack.splice(pos, 0, newFn)
-}
+  this._stack.splice(pos, 0, newFn);
+};
 
 /**
  * Removes a function from the pipeline.
@@ -648,13 +648,13 @@ lunr.Pipeline.prototype.before = function (existingFn, newFn) {
  * @param {lunr.PipelineFunction} fn The function to remove from the pipeline.
  */
 lunr.Pipeline.prototype.remove = function (fn) {
-  var pos = this._stack.indexOf(fn)
+  var pos = this._stack.indexOf(fn);
   if (pos == -1) {
-    return
+    return;
   }
 
-  this._stack.splice(pos, 1)
-}
+  this._stack.splice(pos, 1);
+};
 
 /**
  * Runs the current list of functions that make up the pipeline against the
@@ -664,31 +664,31 @@ lunr.Pipeline.prototype.remove = function (fn) {
  * @returns {Array}
  */
 lunr.Pipeline.prototype.run = function (tokens) {
-  var stackLength = this._stack.length
+  var stackLength = this._stack.length;
 
   for (var i = 0; i < stackLength; i++) {
-    var fn = this._stack[i]
-    var memo = []
+    var fn = this._stack[i];
+    var memo = [];
 
     for (var j = 0; j < tokens.length; j++) {
-      var result = fn(tokens[j], j, tokens)
+      var result = fn(tokens[j], j, tokens);
 
-      if (result === null || result === void 0 || result === '') continue
+      if (result === null || result === void 0 || result === '') continue;
 
       if (Array.isArray(result)) {
         for (var k = 0; k < result.length; k++) {
-          memo.push(result[k])
+          memo.push(result[k]);
         }
       } else {
-        memo.push(result)
+        memo.push(result);
       }
     }
 
-    tokens = memo
+    tokens = memo;
   }
 
-  return tokens
-}
+  return tokens;
+};
 
 /**
  * Convenience method for passing a string through a pipeline and getting
@@ -701,20 +701,20 @@ lunr.Pipeline.prototype.run = function (tokens) {
  * @returns {string[]}
  */
 lunr.Pipeline.prototype.runString = function (str, metadata) {
-  var token = new lunr.Token (str, metadata)
+  var token = new lunr.Token (str, metadata);
 
   return this.run([token]).map(function (t) {
-    return t.toString()
-  })
-}
+    return t.toString();
+  });
+};
 
 /**
  * Resets the pipeline by removing any existing processors.
  *
  */
 lunr.Pipeline.prototype.reset = function () {
-  this._stack = []
-}
+  this._stack = [];
+};
 
 /**
  * Returns a representation of the pipeline ready for serialisation.
@@ -725,11 +725,11 @@ lunr.Pipeline.prototype.reset = function () {
  */
 lunr.Pipeline.prototype.toJSON = function () {
   return this._stack.map(function (fn) {
-    lunr.Pipeline.warnIfFunctionNotRegistered(fn)
+    lunr.Pipeline.warnIfFunctionNotRegistered(fn);
 
-    return fn.label
-  })
-}
+    return fn.label;
+  });
+};
 /*!
  * lunr.Vector
  * Copyright (C) 2020 Oliver Nightingale
@@ -752,9 +752,9 @@ lunr.Pipeline.prototype.toJSON = function () {
  * @param {Number[]} [elements] - The flat list of element index and element value pairs.
  */
 lunr.Vector = function (elements) {
-  this._magnitude = 0
-  this.elements = elements || []
-}
+  this._magnitude = 0;
+  this.elements = elements || [];
+};
 
 
 /**
@@ -770,45 +770,45 @@ lunr.Vector = function (elements) {
 lunr.Vector.prototype.positionForIndex = function (index) {
   // For an empty vector the tuple can be inserted at the beginning
   if (this.elements.length == 0) {
-    return 0
+    return 0;
   }
 
   var start = 0,
       end = this.elements.length / 2,
       sliceLength = end - start,
       pivotPoint = Math.floor(sliceLength / 2),
-      pivotIndex = this.elements[pivotPoint * 2]
+      pivotIndex = this.elements[pivotPoint * 2];
 
   while (sliceLength > 1) {
     if (pivotIndex < index) {
-      start = pivotPoint
+      start = pivotPoint;
     }
 
     if (pivotIndex > index) {
-      end = pivotPoint
+      end = pivotPoint;
     }
 
     if (pivotIndex == index) {
-      break
+      break;
     }
 
-    sliceLength = end - start
-    pivotPoint = start + Math.floor(sliceLength / 2)
-    pivotIndex = this.elements[pivotPoint * 2]
+    sliceLength = end - start;
+    pivotPoint = start + Math.floor(sliceLength / 2);
+    pivotIndex = this.elements[pivotPoint * 2];
   }
 
   if (pivotIndex == index) {
-    return pivotPoint * 2
+    return pivotPoint * 2;
   }
 
   if (pivotIndex > index) {
-    return pivotPoint * 2
+    return pivotPoint * 2;
   }
 
   if (pivotIndex < index) {
-    return (pivotPoint + 1) * 2
+    return (pivotPoint + 1) * 2;
   }
-}
+};
 
 /**
  * Inserts an element at an index within the vector.
@@ -821,9 +821,9 @@ lunr.Vector.prototype.positionForIndex = function (index) {
  */
 lunr.Vector.prototype.insert = function (insertIdx, val) {
   this.upsert(insertIdx, val, function () {
-    throw "duplicate index"
-  })
-}
+    throw "duplicate index";
+  });
+};
 
 /**
  * Inserts or updates an existing index within the vector.
@@ -834,15 +834,15 @@ lunr.Vector.prototype.insert = function (insertIdx, val) {
  * requested value are passed as arguments
  */
 lunr.Vector.prototype.upsert = function (insertIdx, val, fn) {
-  this._magnitude = 0
-  var position = this.positionForIndex(insertIdx)
+  this._magnitude = 0;
+  var position = this.positionForIndex(insertIdx);
 
   if (this.elements[position] == insertIdx) {
-    this.elements[position + 1] = fn(this.elements[position + 1], val)
+    this.elements[position + 1] = fn(this.elements[position + 1], val);
   } else {
-    this.elements.splice(position, 0, insertIdx, val)
+    this.elements.splice(position, 0, insertIdx, val);
   }
-}
+};
 
 /**
  * Calculates the magnitude of this vector.
@@ -850,18 +850,18 @@ lunr.Vector.prototype.upsert = function (insertIdx, val, fn) {
  * @returns {Number}
  */
 lunr.Vector.prototype.magnitude = function () {
-  if (this._magnitude) return this._magnitude
+  if (this._magnitude) return this._magnitude;
 
   var sumOfSquares = 0,
-      elementsLength = this.elements.length
+      elementsLength = this.elements.length;
 
   for (var i = 1; i < elementsLength; i += 2) {
-    var val = this.elements[i]
-    sumOfSquares += val * val
+    var val = this.elements[i];
+    sumOfSquares += val * val;
   }
 
-  return this._magnitude = Math.sqrt(sumOfSquares)
-}
+  return this._magnitude = Math.sqrt(sumOfSquares);
+};
 
 /**
  * Calculates the dot product of this vector and another vector.
@@ -874,23 +874,23 @@ lunr.Vector.prototype.dot = function (otherVector) {
       a = this.elements, b = otherVector.elements,
       aLen = a.length, bLen = b.length,
       aVal = 0, bVal = 0,
-      i = 0, j = 0
+      i = 0, j = 0;
 
   while (i < aLen && j < bLen) {
-    aVal = a[i], bVal = b[j]
+    aVal = a[i], bVal = b[j];
     if (aVal < bVal) {
-      i += 2
+      i += 2;
     } else if (aVal > bVal) {
-      j += 2
+      j += 2;
     } else if (aVal == bVal) {
-      dotProduct += a[i + 1] * b[j + 1]
-      i += 2
-      j += 2
+      dotProduct += a[i + 1] * b[j + 1];
+      i += 2;
+      j += 2;
     }
   }
 
-  return dotProduct
-}
+  return dotProduct;
+};
 
 /**
  * Calculates the similarity between this vector and another vector.
@@ -900,8 +900,8 @@ lunr.Vector.prototype.dot = function (otherVector) {
  * @returns {Number}
  */
 lunr.Vector.prototype.similarity = function (otherVector) {
-  return this.dot(otherVector) / this.magnitude() || 0
-}
+  return this.dot(otherVector) / this.magnitude() || 0;
+};
 
 /**
  * Converts the vector to an array of the elements within the vector.
@@ -909,14 +909,14 @@ lunr.Vector.prototype.similarity = function (otherVector) {
  * @returns {Number[]}
  */
 lunr.Vector.prototype.toArray = function () {
-  var output = new Array (this.elements.length / 2)
+  var output = new Array (this.elements.length / 2);
 
   for (var i = 1, j = 0; i < this.elements.length; i += 2, j++) {
-    output[j] = this.elements[i]
+    output[j] = this.elements[i];
   }
 
-  return output
-}
+  return output;
+};
 
 /**
  * A JSON serializable representation of the vector.
@@ -924,8 +924,8 @@ lunr.Vector.prototype.toArray = function () {
  * @returns {Number[]}
  */
 lunr.Vector.prototype.toJSON = function () {
-  return this.elements
-}
+  return this.elements;
+};
 /* eslint-disable */
 /*!
  * lunr.stemmer
