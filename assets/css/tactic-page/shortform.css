@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 40px;
+  }
+  
+  .section {
+    flex-basis: 30%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #333;
+    border: 1px solid #111;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section h2 {
+    margin-top: 0;
+    border-left: 0px solid #005b99;
+  }
+
+  .sf-header{
+    border-left: 0px solid #a82a75;
+  }
+
+  .section-2{
+    background-color: #444;
+  }
+
+  hr{
+    border: 3px solid #888;
+  }
+
+  .container .section ul{
+    list-style:circle;
+    padding-left: 8px;
+  }
+  
+  /* Optional: add some responsiveness */
+  @media (max-width: 768px) {
+   .section {
+      flex-basis: 100%;
+    }
+  }

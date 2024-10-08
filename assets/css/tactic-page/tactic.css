@@ -29,9 +29,11 @@
   
   .tactic-description li {
     margin-bottom: 10px;
+    font-size: 18px;
   }
   
   .tactic-description li strong {
+    font-size: 22px;
     font-weight: bold;
     color: #ccc;
   }

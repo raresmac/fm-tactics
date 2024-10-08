@@ -85,9 +85,10 @@
     width: 30px;
     height: 30px;
     background-color: #666;
-    border: 1px solid #555;
+    border: 1px solid white;
     border-radius: 50%;
     transition: transform 0.5s, background-color 0.5s;
+    white-space: pre-wrap;
   }
   
   .player:hover {
@@ -121,8 +122,8 @@
     position: absolute;
     visibility: hidden;
     width: 120px;
-    background-color: #333;
-    color: #fff;
+    background-color: #222;
+    color: #3ac373;
     font-size: 10px;
     text-align: center;
     padding: 5px;
@@ -172,7 +173,7 @@
     left: 35%;
   }
   
-  .ldm {
+  .dml {
     top: 30%;
     left: 35%;
   }
@@ -182,7 +183,7 @@
     left: 35%;
   }
   
-  .rdm {
+  .dmr {
     top: 70%;
     left: 35%;
   }
