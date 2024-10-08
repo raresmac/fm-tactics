@@ -43,7 +43,7 @@ $(function() {
     }
     // Measure both visible and hidden links widths
     $vlinks.children().outerWidth(addWidth);
-    $hlinks.children().each(function(){hiddenWidth($(this))});
+    $hlinks.children().each(function(){hiddenWidth($(this));});
   }
   // Get initial state
   measureLinks();
@@ -112,7 +112,7 @@ $(function() {
   }).on('mouseenter', function() {
     // Mouse is back, cancel the timer
     clearTimeout(timer);
-  })
+  });
 
   // check if page has a logo
   if($logoImg.length !== 0){

@@ -8217,8 +8217,6 @@ if ( !support.optSelected ) {
 		},
 		set: function( elem ) {
 
-			/* eslint no-unused-expressions: "off" */
-
 			var parent = elem.parentNode;
 			if ( parent ) {
 				parent.selectedIndex;
@@ -8575,15 +8573,12 @@ jQuery.extend( {
 				while ( i-- ) {
 					option = options[ i ];
 
-					/* eslint-disable no-cond-assign */
-
 					if ( option.selected =
 						jQuery.inArray( jQuery.valHooks.option.get( option ), values ) > -1
 					) {
 						optionSet = true;
 					}
 
-					/* eslint-enable no-cond-assign */
 				}
 
 				// Force browsers to behave consistently when non-matching value is set
