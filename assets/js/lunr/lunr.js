@@ -74,13 +74,11 @@ lunr.utils = {};
  * @function
  */
 lunr.utils.warn = (function (global) {
-  /* eslint-disable no-console */
   return function (message) {
     if (global.console && console.warn) {
       console.warn(message);
     }
   };
-  /* eslint-enable no-console */
 })(this);
 
 /**
@@ -288,7 +286,7 @@ lunr.Set.prototype.intersect = function (other) {
   }
 
   return new lunr.Set (intersection);
-}
+};
 
 /**
  * Returns a new set combining the elements of this and the specified set.
@@ -307,7 +305,7 @@ lunr.Set.prototype.union = function (other) {
   }
 
   return new lunr.Set(Object.keys(this.elements).concat(Object.keys(other.elements)));
-}
+};
 /**
  * A function to calculate the inverse document frequency for
  * a posting. This is shared between the builder and the index
