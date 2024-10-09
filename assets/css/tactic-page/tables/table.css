@@ -42,11 +42,7 @@
 }
 
 .table_component tr:nth-child(odd) td {
-    background-color: #8b8f98;
+    background-color: #72767f;
     color: #ffffff;
 }
-
-/* th {
-  display: table-cell;
-} */
 		

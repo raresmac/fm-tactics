@@ -28,6 +28,11 @@
     "uglify-js": "^3.17.4"
   },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "npm run pa11y && jekyll build",
+    "pa11y": "pa11y --config pa11y.config.js"
+  },
+  "dependencies": {
+    "pa11y": "^8.0.0"
   }
 }
