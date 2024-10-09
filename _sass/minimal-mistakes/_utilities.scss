@@ -337,9 +337,11 @@ $text-alignments: left, right, start, end, center, justify;
 .sticky {
   @include breakpoint($large) {
     @include clearfix();
-    position: -webkit-sticky;
-    position: sticky;
-    top: 2em;
+    &{
+      position: -webkit-sticky;
+      position: sticky;
+      top: 2em;
+    }
 
     > * {
       display: block;

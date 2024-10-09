@@ -4,13 +4,15 @@
 
 #main {
   @include clearfix;
-  margin-inline: auto;
-  padding-inline: 1em;
-  -webkit-animation: $intro-transition;
-  animation: $intro-transition;
-  max-width: 100%;
-  -webkit-animation-delay: 0.15s;
-  animation-delay: 0.15s;
+  &{
+    margin-inline: auto;
+    padding-inline: 1em;
+    -webkit-animation: $intro-transition;
+    animation: $intro-transition;
+    max-width: 100%;
+    -webkit-animation-delay: 0.15s;
+    animation-delay: 0.15s;
+  }
 
   @include breakpoint($x-large) {
     max-width: $max-width;
@@ -176,23 +178,27 @@ body {
   position: relative;
   margin-bottom: 2em;
   @include clearfix;
-  -webkit-animation: $intro-transition;
-  animation: $intro-transition;
-  -webkit-animation-delay: 0.25s;
-  animation-delay: 0.25s;
+  &{
+    -webkit-animation: $intro-transition;
+    animation: $intro-transition;
+    -webkit-animation-delay: 0.25s;
+    animation-delay: 0.25s;
+  }
 
   &--overlay {
     position: relative;
     margin-bottom: 2em;
     padding: 3em 0;
     @include clearfix;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    -webkit-animation: $intro-transition;
-    animation: $intro-transition;
-    -webkit-animation-delay: 0.25s;
-    animation-delay: 0.25s;
+    &{
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      -webkit-animation: $intro-transition;
+      animation: $intro-transition;
+      -webkit-animation-delay: 0.25s;
+      animation-delay: 0.25s;
+    }
 
     a {
       color: #fff;
@@ -455,7 +461,9 @@ body {
 
 .comment {
   @include clearfix();
-  margin: 1em 0;
+  &{
+    margin: 1em 0;
+  }
 
   &:not(:last-child) {
     border-bottom: 1px solid $border-color;
@@ -518,10 +526,12 @@ body {
 
 .page__related {
   @include clearfix();
-  float: inline-start;
-  margin-top: 2em;
-  padding-top: 1em;
-  border-top: 1px solid $border-color;
+  &{
+    float: inline-start;
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid $border-color;
+  }
 
   @include breakpoint($large) {
     float: inline-end;

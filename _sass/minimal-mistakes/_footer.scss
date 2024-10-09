@@ -4,23 +4,27 @@
 
 .page__footer {
   @include clearfix;
-  float: inline-start;
-  margin-inline: 0;
-  width: 100%;
-  margin-top: 3em;
-  color: $muted-text-color;
-  -webkit-animation: $intro-transition;
-  animation: $intro-transition;
-  -webkit-animation-delay: 0.45s;
-  animation-delay: 0.45s;
-  background-color: $footer-background-color;
+  &{
+    float: inline-start;
+    margin-inline: 0;
+    width: 100%;
+    margin-top: 3em;
+    color: $muted-text-color;
+    -webkit-animation: $intro-transition;
+    animation: $intro-transition;
+    -webkit-animation-delay: 0.45s;
+    animation-delay: 0.45s;
+    background-color: $footer-background-color;
+  }
 
   footer {
     @include clearfix;
-    margin-inline: auto;
-    margin-top: 2em;
-    max-width: 100%;
-    padding: 0 1em 2em;
+    &{
+      margin-inline: auto;
+      margin-top: 2em;
+      max-width: 100%;
+      padding: 0 1em 2em;
+    }
 
     @include breakpoint($x-large) {
       max-width: $x-large;

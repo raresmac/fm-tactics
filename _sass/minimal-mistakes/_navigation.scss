@@ -8,14 +8,16 @@
 
 .breadcrumbs {
   @include clearfix;
-  margin: 0 auto;
-  max-width: 100%;
-  padding-inline: 1em;
-  font-family: $sans-serif;
-  -webkit-animation: $intro-transition;
-  animation: $intro-transition;
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
+  &{
+    margin: 0 auto;
+    max-width: 100%;
+    padding-inline: 1em;
+    font-family: $sans-serif;
+    -webkit-animation: $intro-transition;
+    animation: $intro-transition;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+  }
 
   @include breakpoint($x-large) {
     max-width: $x-large;
@@ -51,10 +53,12 @@
 
 .pagination {
   @include clearfix();
-  float: inline-start;
-  margin-top: 1em;
-  padding-top: 1em;
-  width: 100%;
+  &{
+    float: inline-start;
+    margin-top: 1em;
+    padding-top: 1em;
+    width: 100%;
+  }
 
   ul {
     margin: 0;
